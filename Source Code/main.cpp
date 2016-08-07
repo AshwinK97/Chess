@@ -2,7 +2,12 @@
 
 using namespace std;
 
+void drawBoard(string[]);
+void resetBoard(string[]);
+void skipLine(int);
+
 void drawBoard(string board[]) {
+    skipLine(50);
     for (int i=0; i<64; i++) {
         if ((i+1)%8 == 0) {
             cout << board[i] << "  " << (9 - (i+1)/8)  << endl;
@@ -12,6 +17,15 @@ void drawBoard(string board[]) {
     }
     cout << "" << endl;
     cout << " 1  2  3  4  5  6  7  8" << endl;
+}
+
+void resetBoard(string board[]) {
+
+}
+
+void skipLine(int x) {
+    for (int i=0; i<x; i++)
+        cout << "" << endl;
 }
 
 int main()
