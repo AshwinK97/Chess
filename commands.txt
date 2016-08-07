@@ -1,0 +1,15 @@
+to get changes from repository
+
+git fetch upstream
+git merge upstream/master
+
+or
+
+git pull
+
+--------------------------------------------------
+
+to save local changes to repository
+
+git commit -am "<messege>"
+git push
