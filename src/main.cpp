@@ -57,9 +57,6 @@ void movePiece(string board[8][8]) {
     cout << board[0][0] << board[0][5];
     drawBoard(board);
     movePiece(board);
-
-    //cout << "start - x: " << x << " y: " << y << endl;
-    //cout << "end   - x2: " << x2 << " y2: " << y2 << endl;
 }
 
 void drawBoard(string board[8][8]) {
