@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ void movePiece(string board[8][8]) {
 
     cout << "Enter the piece you want to move: ";
     cin >> raw;
+    std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
     string temp = raw.substr(0,1);
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
@@ -37,6 +39,7 @@ void movePiece(string board[8][8]) {
 
     cout << "Enter the location you want to move to: ";
     cin >> raw;
+    std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
     temp = raw.substr(0,1);
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
