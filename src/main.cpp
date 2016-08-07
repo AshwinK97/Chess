@@ -23,34 +23,44 @@ void movePiece(string board[8][8]) {
     string raw;
     string letters[] = {"a", "b", "c", "d", "e", "f", "g", "h"};
     int x = 0, y, x2, y2;
-    
+
     cout << "Enter the piece you want to move: ";
     cin >> raw;
     string temp = raw.substr(0,1);
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
-            x = i;
+            y = i;
             break;
         }
     }
-    y = 8 - (atoi(raw.substr(1,2).c_str()));
+    x = 8 - (atoi(raw.substr(1,2).c_str()));
 
     cout << "Enter the location you want to move to: ";
     cin >> raw;
     temp = raw.substr(0,1);
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
-            x2 = i;
+            y2 = i;
             break;
         }
     }
-    y2 = 8 - (atoi(raw.substr(1,2).c_str()));
+    x2 = 8 - (atoi(raw.substr(1,2).c_str()));
+
+    cout << x2 << y2 << endl;
+
+    board[x2][y2] = board[x][y];
+    board[x][y] = ' ';
+
+    cout << board[0][0] << board[0][5];
+    drawBoard(board);
+    movePiece(board);
 
     //cout << "start - x: " << x << " y: " << y << endl;
     //cout << "end   - x2: " << x2 << " y2: " << y2 << endl;
 }
 
 void drawBoard(string board[8][8]) {
+    cout << board[0][0] << board[0][5];
     skipLine(50);
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
@@ -75,7 +85,6 @@ void resetBoard(string board[8][8], char piece1[2][8], char piece2[2][8]) {
             if (i<2)
                 board[i][j] = piece1[i][j];
             else if (i>5) {
-                cout << i;
                 if (i==6)
                     board[i][j] = piece2[i-5][j];
                 else
@@ -96,7 +105,7 @@ int main() {
     string board[8][8];
     char piece1[2][8] = {{'c','k','b','q','k','b','k','c'},{'p','p','p','p','p','p','p','p'}};
     char piece2[2][8] = {{'C','K','B','Q','K','B','K','C'},{'P','P','P','P','P','P','P','P'}};
-    
+
     resetBoard(board, piece1, piece2);
     drawBoard(board);
     movePiece(board);
