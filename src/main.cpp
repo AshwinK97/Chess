@@ -8,15 +8,18 @@ void skipLine(int);
 
 void drawBoard(string board[]) {
     skipLine(50);
+    int vertical[] = {8,7,6,5,4,3,2,1};
+    int j = 0;
     for (int i=0; i<64; i++) {
-        if ((i+1)%8 == 0) {
-            cout << board[i] << "  " << (9 - (i+1)/8)  << endl;
+        if (i%8 == 0) {
+            cout << endl << vertical[j++] << " " << board[i];
         }
-        else
+        else {
             cout << board[i];
+        }
     }
     cout << "" << endl;
-    cout << " 1  2  3  4  5  6  7  8" << endl;
+    cout << "   a  b  c  d  e  f  g  h" << endl;
 }
 
 void resetBoard(string board[]) {
