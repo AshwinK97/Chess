@@ -7,19 +7,19 @@
 
 using namespace std;
 
-void drawBoard(string[][8]);
-void resetBoard(string[][8]);
+void drawBoard(string[8][8]);
+void resetBoard(string[8][8]);
 void skipLine(int);
 
-void drawBoard(string board[][8]) {
+void drawBoard(string board[8][8]) {
     skipLine(50);
-    int vertical[] = {8,7,6,5,4,3,2,1};
+    int vertical[8] = {8,7,6,5,4,3,2,1};
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
             if (j==0)
-                cout << i+1 << "  " << board[i][j];
+                cout << i+1 << "  " << '[' << board[i][j] << ']';
             else
-                cout << board[i][j];
+                cout << '[' << board[i][j] << ']';
         }
         cout << endl;
     }
@@ -30,7 +30,7 @@ void drawBoard(string board[][8]) {
 void resetBoard(string board[][8]) {
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
-            board[i][j] = "[ ]";
+            board[i][j] = ' ';
         }
     }
 }
