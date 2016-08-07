@@ -1,3 +1,8 @@
+/*
+* @author: Hirthanan, Ashwin
+* Text based chess game using oop design
+*/
+
 #include <iostream>
 
 using namespace std;
