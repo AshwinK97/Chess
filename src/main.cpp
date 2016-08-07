@@ -23,31 +23,31 @@ void movePiece(string board[8][8]) {
     string raw;
     string letters[] = {"a", "b", "c", "d", "e", "f", "g", "h"};
     int x = 0, y, x2, y2;
-    
+
     cout << "Enter the piece you want to move: ";
     cin >> raw;
     string temp = raw.substr(0,1);
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
-            x = i;
+            x = i + 1;
             break;
         }
     }
-    y = 8 - (atoi(raw.substr(1,2).c_str()));
+    y = (atoi(raw.substr(1,2).c_str()));
 
     cout << "Enter the location you want to move to: ";
     cin >> raw;
     temp = raw.substr(0,1);
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
-            x2 = i;
+            x2 = i + 1;
             break;
         }
     }
-    y2 = 8 - (atoi(raw.substr(1,2).c_str()));
+    y2 = (atoi(raw.substr(1,2).c_str()));
 
-    cout << "start - x: " << x << " y: " << y << endl;
-    cout << "end   - x2: " << x2 << " y2: " << y2 << endl;
+    cout << "start - x: " << letters[x-1] << " y: " << y << endl;
+    cout << "end   - x2: " << letters[x2-1] << " y2: " << y2 << endl;
 }
 
 void drawBoard(string board[8][8]) {
