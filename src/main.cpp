@@ -28,7 +28,9 @@ void drawBoard(string board[]) {
 }
 
 void resetBoard(string board[]) {
-
+    for (int i=0; i<64; i++) {
+        board[i] = "[ ]";
+    }
 }
 
 void skipLine(int x) {
@@ -39,9 +41,8 @@ void skipLine(int x) {
 int main()
 {
     string board[64];
-    for (int i=0; i<64; i++) {
-        board[i] = "[ ]";
-    }
+    resetBoard(board);
     drawBoard(board);
+    
     return 0;
 }
