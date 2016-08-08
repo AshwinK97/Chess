@@ -1,6 +1,7 @@
 #ifndef Piece_H
 #define Piece_H
-#include <string>
+
+using namespace std;
 
 class Piece
 {
@@ -8,6 +9,7 @@ class Piece
         Piece (string name, string color, int xCoord, int yCoord); // Constructor
         ~Piece (); //Destructor
 
+        string getName();
         bool getAlive();
         void setAlive(bool alive);
 

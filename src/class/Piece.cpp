@@ -1,4 +1,6 @@
-#include "Piece.h"
+#include "../include/Piece.h"
+
+using namespace std;
 
 Piece::Piece (string name, string color, int xCoord, int yCoord) // Constructor
 {
@@ -13,12 +15,17 @@ Piece::~Piece () // Destructor
 {
 }
 
+string Piece::getName()
+{
+    return itsName;
+}
+
 bool Piece::getAlive()
 {
     return itsAlive;
 }
 
-Piece::setAlive(bool alive)
+void Piece::setAlive(bool alive)
 {
     itsAlive = alive;
 }
@@ -33,7 +40,7 @@ int Piece::getYCoord()
     return itsYCoord;
 }
 
-Piece::setCoords(int xCoord, int yCoord)
+void Piece::setCoords(int xCoord, int yCoord)
 {
     itsXCoord = xCoord;
     itsYCoord = yCoord;

@@ -1,4 +1,6 @@
-#include "Pawn.h"
+#include "../include/Pawn.h"
+
+using namespace std;
 
 Pawn::Pawn()
 

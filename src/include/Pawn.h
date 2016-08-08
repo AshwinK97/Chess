@@ -1,6 +1,8 @@
 #ifndef Pawn_H
 #define Pawn_H
 
+using namespace std;
+
 #include "Piece.h"
 
 class Pawn : public Piece
