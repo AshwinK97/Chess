@@ -1,11 +1,12 @@
 #include "Piece.h"
 
-Piece::Piece (string type, string color, string coord) // Constructor
+Piece::Piece (string name, string color, int xCoord, int yCoord) // Constructor
 {
-    itsType = type;
+    itsName = name;
     itsColor = color;
     itsAlive = true;
-    itsCoord = coord;
+    itsXCoord = xCoord;
+    itsYCoord = yCoord;
 }
 
 Piece::~Piece () // Destructor
@@ -22,12 +23,18 @@ Piece::setAlive(bool alive)
     itsAlive = alive;
 }
 
-int Piece::getCoord()
+int Piece::getXCoord()
 {
-    return itsCoord;
+    return itsXCoord;
 }
 
-Piece::setAlive(string newCoord)
+int Piece::getYCoord()
 {
-    itsCoord = newCoord;
+    return itsYCoord;
+}
+
+Piece::setCoords(int xCoord, int yCoord)
+{
+    itsXCoord = xCoord;
+    itsYCoord = yCoord;
 }

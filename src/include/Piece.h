@@ -5,20 +5,21 @@
 class Piece
 {
     public:
-        Piece (string type, string color, string coord); // Constructor
+        Piece (string name, string color, int xCoord, int yCoord); // Constructor
         ~Piece (); //Destructor
 
         bool getAlive();
         void setAlive(bool alive);
 
-        int getCoords();
-        void setCoords(string newCoords);
+        int getXCoord();
+        int getYCoord();
+        void setCoords(int xCoord, int yCoord);
 
     private:
-        string itsType;
+        string itsName;
         string itsColor;
         bool itsAlive;
-        string itsCoord;
+        int itsXCoord, itsYCoord;
 };
 
 

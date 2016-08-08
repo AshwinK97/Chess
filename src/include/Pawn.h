@@ -9,14 +9,11 @@ class Pawn : public Piece
         Pawn (); // Constructor
         ~Pawn (); //Destructor
 
+        bool movePawn(int curXCoord, int curYCoord, int ,int newXCoord, int newYCoord);
     private:
 
+
 };
-
-
-
-
-
 
 
 

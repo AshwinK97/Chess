@@ -11,7 +11,7 @@ using namespace std;
 
 void movePiece(string[8][8]);
 void drawBoard(string[8][8]);
-void resetBoard(string[8][8], char[8][2], char[8][2]);
+void resetBoard(string[8][8], char[2][8], char[2][8]);
 void skipLine(int);
 
 /* gets the location of the piece from user
@@ -49,17 +49,12 @@ void movePiece(string board[8][8]) {
     }
     x2 = 8 - (atoi(raw.substr(1,2).c_str()));
 
-    cout << x2 << y2 << endl;
-
     board[x2][y2] = board[x][y];
     board[x][y] = ' ';
 
-    cout << board[0][0] << board[0][5];
     drawBoard(board);
     movePiece(board);
 
-    //cout << "start - x: " << x << " y: " << y << endl;
-    //cout << "end   - x2: " << x2 << " y2: " << y2 << endl;
 }
 
 void drawBoard(string board[8][8]) {
