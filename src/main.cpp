@@ -6,12 +6,13 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
 void movePiece(string[8][8]);
 void drawBoard(string[8][8]);
-void resetBoard(string[8][8], char[8][2], char[8][2]);
+void resetBoard(string[8][8], char[2][8], char[2][8]);
 void skipLine(int);
 
 /* gets the location of the piece from user
@@ -25,42 +26,43 @@ void movePiece(string board[8][8]) {
     string letters[] = {"a", "b", "c", "d", "e", "f", "g", "h"};
     int x = 0, y, x2, y2;
 
-    cout << "Enter the piece you want to move: ";
-    cin >> raw;
-    std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
-    string temp = raw.substr(0,1);
-    for (int i=0; i<8; i++) {
-        if (letters[i] == temp) {
-            y = i;
-            break;
+    do {
+        drawBoard(board);
+        cout << "Enter the piece you want to move: ";
+        cin >> raw;
+        std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
+        string temp = raw.substr(0,1);
+        for (int i=0; i<8; i++) {
+            if (letters[i] == temp) {
+                y = i;
+                break;
+            }
         }
-    }
-    x = 8 - (atoi(raw.substr(1,2).c_str()));
+        x = 8 - (atoi(raw.substr(1,2).c_str()));
+    } while(!(x>=0 && x<8 && y>=0 && y<8));
 
-    cout << "Enter the location you want to move to: ";
-    cin >> raw;
-    std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
-    temp = raw.substr(0,1);
-    for (int i=0; i<8; i++) {
-        if (letters[i] == temp) {
-            y2 = i;
-            break;
+    do {
+        drawBoard(board);
+        cout << "Enter the location you want to move to: ";
+        cin >> raw;
+        std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
+        string temp = raw.substr(0,1);
+        for (int i=0; i<8; i++) {
+            if (letters[i] == temp) {
+                y2 = i;
+                break;
+            }
         }
-    }
-    x2 = 8 - (atoi(raw.substr(1,2).c_str()));
-
-    cout << x2 << y2 << endl;
+        x2 = 8 - (atoi(raw.substr(1,2).c_str()));
+    } while(!(x2>=0 && x2<8 && y2>=0 && y2<8));
 
     board[x2][y2] = board[x][y];
     board[x][y] = ' ';
 
-    cout << board[0][0] << board[0][5];
     drawBoard(board);
-    movePiece(board);
 }
 
 void drawBoard(string board[8][8]) {
-    cout << board[0][0] << board[0][5];
     skipLine(50);
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
@@ -108,7 +110,9 @@ int main() {
 
     resetBoard(board, piece1, piece2);
     drawBoard(board);
-    movePiece(board);
+
+    while(true)
+        movePiece(board);
 
     return 0;
 }
