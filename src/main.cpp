@@ -6,13 +6,18 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
 void movePiece(string[8][8]);
 void drawBoard(string[8][8]);
-void resetBoard(string[8][8], char[8][2], char[8][2]);
+void resetBoard(string[8][8], char[2][8], char[2][8]);
 void skipLine(int);
+
+/* validates if user input is correct */
+
+// bool isValidCoord()
 
 /* gets the location of the piece from user
 *  converts from string to 2 ints
@@ -21,35 +26,38 @@ void skipLine(int);
 */
 
 void movePiece(string board[8][8]) {
-    string raw;
-    string letters[] = {"a", "b", "c", "d", "e", "f", "g", "h"};
+    char raw[2];
+    char letters[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
     int x = 0, y, x2, y2;
 
     cout << "Enter the piece you want to move: ";
-    cin >> raw;
-    std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
-    string temp = raw.substr(0,1);
+    cin >> raw[0];
+    cin >> raw[1];
+    raw[0] = tolower(raw[0]);
+    x = 8 - (raw[1] - '0'); //converts to proper number by subtracting ascii '0'
+    char temp = raw[0];
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
             y = i;
             break;
         }
     }
-    x = 8 - (atoi(raw.substr(1,2).c_str()));
 
     cout << "Enter the location you want to move to: ";
-    cin >> raw;
-    std::transform(raw.begin(), raw.end(), raw.begin(), ::tolower);
-    temp = raw.substr(0,1);
+    cin >> raw[0];
+    cin >> raw[1];
+    cout << raw[0] << raw[1] << endl;
+    raw[0] = tolower(raw[0]);
+    x2 = 8 - (raw[1] - '0');
+    temp = raw[0];
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
             y2 = i;
             break;
         }
     }
-    x2 = 8 - (atoi(raw.substr(1,2).c_str()));
 
-    cout << x2 << y2 << endl;
+    cout << "hi :" <<x2 << " " << y2 << endl;
 
     board[x2][y2] = board[x][y];
     board[x][y] = ' ';
@@ -65,14 +73,14 @@ void drawBoard(string board[8][8]) {
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
             if (j==0)
-                cout << 8-(i) << "  " << '[' << board[i][j] << ']';
+                cout << 8-(i) << " " << '[' << board[i][j] << ']';
             else
-                cout << '[' << board[i][j] << ']';
+                cout << "[" << board[i][j] << "]";
         }
         cout << endl;
     }
-    cout << "" << endl;
-    cout << "    a  b  c  d  e  f  g  h" << endl;
+    cout << " " << endl;
+    cout << "   a  b  c  d  e  f  g  h" << endl;
 }
 
 /* string piece1[][] and piece2[][]
@@ -98,7 +106,7 @@ void resetBoard(string board[8][8], char piece1[2][8], char piece2[2][8]) {
 
 void skipLine(int x) {
     for (int i=0; i<x; i++)
-        cout << "" << endl;
+        cout << " " << endl;
 }
 
 int main() {
