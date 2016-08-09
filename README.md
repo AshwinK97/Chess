@@ -1,2 +1,2 @@
 # Chess
-# Learning how to make chess
+# Two Player Chess Game
