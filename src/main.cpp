@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string>
 #include <algorithm>
+#include <typeinfo>
 
 using namespace std;
 
@@ -17,7 +18,19 @@ void skipLine(int);
 
 /* validates if user input is correct */
 
-// bool isValidCoord()
+bool isValidCoord(int xCoord, int yCoord) { //pass xCoord as char but is converted to ascii number
+    if((0 <= xCoord && xCoord<= 7) && (0 <= yCoord && yCoord <= 7)) {
+        return true;
+    }
+    return false;
+}
+
+bool isLengthTwo(string str){
+    if(str.length() == 2) {
+        return true;
+    }
+    return false;
+}
 
 /* gets the location of the piece from user
 *  converts from string to 2 ints
@@ -26,13 +39,15 @@ void skipLine(int);
 */
 
 void movePiece(string board[8][8]) {
-    char raw[2];
+    char raw[2], raw2[2];
+    string userInput, userInput2;
     char letters[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
     int x = 0, y, x2, y2;
 
     cout << "Enter the piece you want to move: ";
-    cin >> raw[0];
-    cin >> raw[1];
+    cin >> userInput;
+    raw[0] = userInput[0];
+    raw[1] = userInput[1];
     raw[0] = tolower(raw[0]);
     x = 8 - (raw[1] - '0'); //converts to proper number by subtracting ascii '0'
     char temp = raw[0];
@@ -44,32 +59,35 @@ void movePiece(string board[8][8]) {
     }
 
     cout << "Enter the location you want to move to: ";
-    cin >> raw[0];
-    cin >> raw[1];
-    cout << raw[0] << raw[1] << endl;
-    raw[0] = tolower(raw[0]);
-    x2 = 8 - (raw[1] - '0');
-    temp = raw[0];
+    cin >> userInput2;
+    raw2[0] = userInput2[0];
+    raw2[1] = userInput2[1];
+    x2 = 8 - (raw2[1] - '0');
+    raw2[0] = tolower(raw2[0]);
+    char temp2 = raw2[0];
     for (int i=0; i<8; i++) {
-        if (letters[i] == temp) {
+        if (letters[i] == temp2) {
             y2 = i;
             break;
         }
     }
 
-    cout << "hi :" <<x2 << " " << y2 << endl;
+    if(isValidCoord(y, x) &&
+        isValidCoord(y2, x2) &&
+        isLengthTwo(userInput) && isLengthTwo(userInput2)){
+        board[x2][y2] = board[x][y];
+        board[x][y] = ' ';
+    }
+    else {
+        cout <<"Invalid inputs, please input correctly using the format (a-h)(1-8)";
+    }
 
-    board[x2][y2] = board[x][y];
-    board[x][y] = ' ';
-
-    cout << board[0][0] << board[0][5];
     drawBoard(board);
     movePiece(board);
 }
 
 void drawBoard(string board[8][8]) {
-    cout << board[0][0] << board[0][5];
-    skipLine(50);
+    skipLine(2);
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
             if (j==0)
