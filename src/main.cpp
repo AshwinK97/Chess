@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <string>
 #include <algorithm>
-#include <typeinfo>
 
 using namespace std;
 
@@ -129,7 +128,7 @@ void resetBoard(string board[8][8], char piece1[2][8], char piece2[2][8]) {
 
 void skipLine(int x) {
     for (int i=0; i<x; i++)
-        cout << " " << endl;
+        cout << "" << endl;
 }
 
 int main() {
