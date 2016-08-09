@@ -95,13 +95,13 @@ void drawBoard(string board[8][8]) {
     for (int i=0; i<8; i++) {
         for (int j=0; j<8; j++) {
             if (j==0)
-                cout << 8-(i) << " " << '[' << board[i][j] << ']';
+                cout << 8-(i) << "  " << '[' << board[i][j] << ']';
             else
                 cout << "[" << board[i][j] << "]";
         }
         cout << endl;
     }
-    cout << " " << endl;
+    cout << "" << endl;
     cout << "   a  b  c  d  e  f  g  h" << endl;
 }
 
