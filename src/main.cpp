@@ -75,8 +75,13 @@ void movePiece(string board[8][8]) {
     if(isValidCoord(y, x) &&
         isValidCoord(y2, x2) &&
         isLengthTwo(userInput) && isLengthTwo(userInput2)){
-        board[x2][y2] = board[x][y];
-        board[x][y] = ' ';
+        if(board[x][y] == ' '){
+            cout << "Cannot Select Empty Space";
+        }
+        else {
+            board[x2][y2] = board[x][y];
+            board[x][y] = ' ';
+        }
     }
     else {
         cout <<"Invalid inputs, please input correctly using the format (a-h)(1-8)";
