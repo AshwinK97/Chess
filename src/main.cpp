@@ -41,7 +41,7 @@ void movePiece(string board[8][8]) {
     char raw[2], raw2[2];
     string userInput, userInput2;
     char letters[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
-    int x, y, x2, y2;
+    int y, x, y2, x2;
 
     drawBoard(board);
     cout << "Enter the piece you want to move: ";
@@ -49,17 +49,17 @@ void movePiece(string board[8][8]) {
     raw[0] = userInput[0];
     raw[1] = userInput[1];
     raw[0] = tolower(raw[0]);
-    x = 8 - (raw[1] - '0'); //converts to proper number by subtracting ascii '0'
+    y = 8 - (raw[1] - '0'); //converts to proper number by subtracting ascii '0'
     char temp = raw[0];
     for (int i=0; i<8; i++) {
         if (letters[i] == temp) {
-            y = i;
+            x = i;
             break;
         }
     }
 
-    if(isValidCoord(raw[0], x) && isLengthTwo(userInput)) {
-        if(board[x][y] == " "){
+    if(isValidCoord(raw[0], y) && isLengthTwo(userInput)) {
+        if(board[y][x] == " "){
             cout << "Cannot Select Empty Space" << endl;
             movePiece(board);
         	return;
@@ -76,20 +76,19 @@ void movePiece(string board[8][8]) {
     cin >> userInput2;
     raw2[0] = userInput2[0];
     raw2[1] = userInput2[1];
-    x2 = 8 - (raw2[1] - '0');
+    y2 = 8 - (raw2[1] - '0');
     raw2[0] = tolower(raw2[0]);
     char temp2 = raw2[0];
     for (int i=0; i<8; i++) {
         if (letters[i] == temp2) {
-            y2 = i;
+            x2 = i;
             break;
         }
     }
 
-    if(isValidCoord(raw2[0], x2) && isLengthTwo(userInput2)){
-    	//cout << "Y2 is " << y2 << endl;
-        board[x2][y2] = board[x][y];
-        board[x][y] = ' ';
+    if(isValidCoord(raw2[0], y2`) && isLengthTwo(userInput2)){
+        board[y2][x2] = board[y][x];
+        board[y][x] = ' ';
     }
     else {
         cout <<"Invalid input, please input correctly using the format (a-h)(1-8)" << endl;
