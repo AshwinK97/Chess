@@ -18,13 +18,13 @@ void skipLine(int);
 /* validates if user input is correct */
 
 bool isValidCoord(int xCoord, int yCoord) { //pass xCoord as char but is converted to ascii number
-    if((0 <= xCoord && xCoord<= 7) && (0 <= yCoord && yCoord <= 7)) {
+    if((97 <= xCoord && xCoord<= 104) && (0 <= yCoord && yCoord <= 7)) {
         return true;
     }
     return false;
 }
 
-bool isLengthTwo(string str){
+bool isLengthTwo(string str) {
     if(str.length() == 2) {
         return true;
     }
@@ -41,8 +41,9 @@ void movePiece(string board[8][8]) {
     char raw[2], raw2[2];
     string userInput, userInput2;
     char letters[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
-    int x = 0, y, x2, y2;
+    int x, y, x2, y2;
 
+    drawBoard(board);
     cout << "Enter the piece you want to move: ";
     cin >> userInput;
     raw[0] = userInput[0];
@@ -55,6 +56,20 @@ void movePiece(string board[8][8]) {
             y = i;
             break;
         }
+    }
+
+    if(isValidCoord(raw[0], x) && isLengthTwo(userInput)) {
+        if(board[x][y] == " "){
+            cout << "Cannot Select Empty Space" << endl;
+            movePiece(board);
+        	return;
+        }
+    }
+    else {
+        cout <<"Invalid input, please input correctly using the format (a-h)(1-8)" << endl;
+        movePiece(board);
+        return;
+
     }
 
     cout << "Enter the location you want to move to: ";
@@ -71,23 +86,17 @@ void movePiece(string board[8][8]) {
         }
     }
 
-    if(isValidCoord(y, x) &&
-        isValidCoord(y2, x2) &&
-        isLengthTwo(userInput) && isLengthTwo(userInput2)){
-        cout << endl << board[x][y] << endl;
-        if(board[x][y] == " "){
-            cout << "Cannot Select Empty Space";
-        }
-        else {
-            board[x2][y2] = board[x][y];
-            board[x][y] = ' ';
-        }
+    if(isValidCoord(raw2[0], x2) && isLengthTwo(userInput2)){
+    	//cout << "Y2 is " << y2 << endl;
+        board[x2][y2] = board[x][y];
+        board[x][y] = ' ';
     }
     else {
-        cout <<"Invalid inputs, please input correctly using the format (a-h)(1-8)";
+        cout <<"Invalid input, please input correctly using the format (a-h)(1-8)" << endl;
+        movePiece(board);
+        return;
     }
 
-    drawBoard(board);
     movePiece(board);
 }
 
@@ -138,7 +147,6 @@ int main() {
     char piece2[2][8] = {{'C','K','B','Q','K','B','K','C'},{'P','P','P','P','P','P','P','P'}};
 
     resetBoard(board, piece1, piece2);
-    drawBoard(board);
     movePiece(board);
 
     return 0;
