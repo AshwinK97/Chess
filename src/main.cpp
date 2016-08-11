@@ -86,7 +86,7 @@ void movePiece(string board[8][8]) {
         }
     }
 
-    if(isValidCoord(raw2[0], y2`) && isLengthTwo(userInput2)){
+    if(isValidCoord(raw2[0], y2) && isLengthTwo(userInput2)){
         board[y2][x2] = board[y][x];
         board[y][x] = ' ';
     }
@@ -111,7 +111,7 @@ void drawBoard(string board[8][8]) {
         cout << endl;
     }
     cout << "" << endl;
-    cout << "   a  b  c  d  e  f  g  h" << endl;
+    cout << "    a  b  c  d  e  f  g  h" << endl;
 }
 
 /* string piece1[][] and piece2[][]
