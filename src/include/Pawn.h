@@ -7,17 +7,12 @@ using namespace std;
 
 class Pawn : public Piece
 {
-	using Piece::Piece;
-	bool movePawn(int curXCoord, int curYCoord, int newXCoord, int newYCoord);
-
-	/*
     public:
         Pawn (); // Constructor
         ~Pawn (); //Destructor
 
+        bool movePawn(int curXCoord, int curYCoord, int ,int newXCoord, int newYCoord);
     private:
-    */
-    
 
 
 };

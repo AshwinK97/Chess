@@ -2,13 +2,9 @@
 
 using namespace std;
 
-/*
-Pawn::Pawn() {
+Pawn::Pawn()
 
-}
-*/
-
-bool Pawn::movePawn(int curXCoord, int curYCoord, int xCoord, int yCoord) // basically a setter
+int Pawn::movePawn(int curXCoord, int curYCoord, int xCoord, int yCoord) // basically a setter
 {
 
 }

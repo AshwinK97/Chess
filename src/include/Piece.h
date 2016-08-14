@@ -6,7 +6,7 @@ using namespace std;
 class Piece
 {
     public:
-        explicit Piece (string name, string color, int xCoord, int yCoord); // Constructor
+        Piece (string name, string color, int xCoord, int yCoord); // Constructor
         ~Piece (); //Destructor
 
         string getName();

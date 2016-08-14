@@ -5,9 +5,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "class/Pawn.cpp"
 #include "class/Piece.cpp"
-#include <algorithm>
 
 using namespace std;
 
@@ -105,8 +103,8 @@ int main() {
     char piece1[2][8] = {{'c','k','b','q','k','b','k','c'},{'p','p','p','p','p','p','p','p'}};
     char piece2[2][8] = {{'C','K','B','Q','K','B','K','C'},{'P','P','P','P','P','P','P','P'}};
 
-    Pawn pawn("Pawn","white", 0, 5);
-    //cout << pawn.getName() << pawn.getAlive();
+    Piece pawn("Pawn","white", 0, 5);
+    cout << pawn.getName() << pawn.getAlive();
     resetBoard(board, piece1, piece2);
     drawBoard(board);
     movePiece(board);
