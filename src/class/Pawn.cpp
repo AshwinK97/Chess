@@ -6,7 +6,7 @@ using namespace std;
 Pawn::Pawn(string name, string color, int xCoord, int yCoord)
 : Piece (name, color, xCoord, yCoord)
 {
-
+    itsTurn = 0;
 }
 
 Pawn::~Pawn () // Destructor

@@ -148,8 +148,9 @@ int main() {
     char piece2[2][8] = {{'C','K','B','Q','K','B','K','C'},{'P','P','P','P','P','P','P','P'}};
 
     Pawn pawn("Pawn","white", 0, 5);
+    pawn.itsTurn += 1;
 
-    cout << pawn.getName() << endl;
+    cout << pawn.itsTurn << endl;
 
     resetBoard(board, piece1, piece2);
     movePiece(board);
