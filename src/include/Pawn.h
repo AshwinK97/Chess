@@ -8,10 +8,10 @@ using namespace std;
 class Pawn : public Piece
 {
     public:
-        Pawn (); // Constructor
+        Pawn (string name, string color, int xCoord, int yCoord); // Constructor
         ~Pawn (); //Destructor
 
-        bool movePawn(int curXCoord, int curYCoord, int ,int newXCoord, int newYCoord);
+        bool movePawn(int curXCoord, int curYCoord,int newXCoord, int newYCoord);
     private:
 
 
