@@ -5,6 +5,8 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include "class/Piece.cpp"
+#include "class/Pawn.cpp"
 #include <string>
 #include <algorithm>
 
@@ -62,7 +64,7 @@ void movePiece(string board[8][8]) {
         if(board[y][x] == " "){
             cout << "Cannot Select Empty Space" << endl;
             movePiece(board);
-        	return;
+            return;
         }
     }
     else {
@@ -144,6 +146,11 @@ int main() {
     string board[8][8];
     char piece1[2][8] = {{'c','k','b','q','k','b','k','c'},{'p','p','p','p','p','p','p','p'}};
     char piece2[2][8] = {{'C','K','B','Q','K','B','K','C'},{'P','P','P','P','P','P','P','P'}};
+
+    Pawn pawn("Pawn","white", 0, 5);
+    pawn.itsTurn += 1;
+
+    cout << pawn.itsTurn << endl;
 
     resetBoard(board, piece1, piece2);
     movePiece(board);
